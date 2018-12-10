@@ -6,8 +6,12 @@ body {
     padding: 0;
     width: 550px;
   }
-#chavePublicaC{
+.areaMedia{
   min-height: 100px;
+}
+
+.areaGrande{
+  min-height: 200px;
 }
 
 #chavePublicaA{

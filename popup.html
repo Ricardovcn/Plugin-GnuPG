@@ -8,67 +8,68 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link rel="stylesheet" href="pupup.css">
-
 </head>
-<body>
 
+<body>
     <div class="container" id="Cadastrar">
         <h3 class="header center orange-text">Plugin de Segurança</h3>
         <div class="row center">
           <spam class="header col s12 light">Um plugin para Criptografar e Descriptografar emails.</spam>
         </div>
 
-
         <div class="row">
                 <div class="col s12">
                   <ul class="tabs">
-                    <li class="tab col s3"><a href="#tab4" id="abaLabel">Chave privada</a></li>
                     <li class="tab col s3"><a id="encryptAba" href="#tab1">Criptografar</h6></a></li>
-                    <li class="tab col s3 "><a href="#tab3" id="abaLabel">Chaves Publicas</a></li>
                     <li class="tab col s3"><a href="#tab2" id="abaLabel">Decriptar</a></li>
+                    <li class="tab col s3 "><a href="#tab3" id="abaLabel">Importar</a></li>
+                    <li class="tab col s3"><a href="#tab4" id="abaLabel">Chave Privada</a></li>           
                   </ul>
                 </div>
                 <div id="tab1" class="col s12">
                     <!--     CRIPTOGRAFAR    -->
-                    <div>
-                        <div class="input-field col s12">
-                            <input id="emailEncrypt" class="validate">
-                            <label for="emailEncrypt">Email de destino (Chave publica):</label>
-                        </div>
-                        <label for="textoEncrypt">Texto do Email:</label>
-                        <textarea id="textoEncrypt"></textarea>        
-                        <spam id="encrypt" class=" left-align btn-large waves-effect waves-light orange">Criptografar</spam>
-                        <h6 class="orange-text"> Texto Criptografado </h6>
-                        <textarea id="textoCriptografado"></textarea>
-                    </div>  
+                        <div>
+                            <div class="input-field col s12">
+                                <input id="emailEncrypt" type="email" class="validate">
+                                <label for="emailEncrypt">Email</label>
+                            </div>
+                            <h6 class="orange-text"> Texto do Email: </h6>
+                            <textarea id="textoEncrypt" class="areaMedia"></textarea>        
+                            <button id="btnEncrypt" class=" left-align btn-large waves-effect waves-light orange">Criptografar</button>
+                            <h6 class="orange-text"> Texto Criptografado </h6>
+                            <textarea id="textoCriptografado" class="areaMedia"></textarea>
+                        </div>  
                 </div>
                 <div id="tab2" class="col s12">
                     <!--     ´DECRIPTAR   -->
                     <div>
                         <div class="input-field col s12">
-                            <textarea id="emailD" class="materialize-textarea"></textarea>
-                            <label for="emailD">Texto do Email:</label>
-                        </div> 
+                            <input id="senha" type="email" class="validate">
+                            <label for="senha">Palavra Chave</label>
+                        </div>
+                        <h6 class="orange-text"> Texto Criptografado </h6>
+                        <textarea id="textoADecriptar" class="areaMedia"></textarea>
                         <spam id="decrypt" class=" left-align btn-large waves-effect waves-light orange">Decriptar</spam>
+                        <h6 class="orange-text"> Texto Decriptado </h6>
+                        <textarea id="textoDecriptado" class="areaMedia"></textarea>
                     </div>  
                 </div>
                 <div id="tab3" class="col s12">
-                    <!--    CADASTRAR CHAVES PUBLICAS   -->
+                    <!--    IMPORTAR CHAVES -->
                     <div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="email" type="email" class="validate">
-                                <label for="email">Email</label>
-                            </div>
-                            <div class="col s12">
-                                <label for="chavePublicaA">Chave publica</label>
-                                <textarea id="chavePublicaA"></textarea>
-                            </div> 
-                            <spam id="btn" class=" left-align btn-large waves-effect waves-light orange">Adicionar</spam>
-                        </div>  
+                        <form role="form" action="http://127.0.0.1:5000/importar" method="POST">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6 class="orange-text"> Chave </h6>
+                                    <textarea class="areaGrande" name="chaveImportar" id="chaveImportar"></textarea>
+                                </div>
+                                <button type="submit" name="submit" id="btnImportarChave" class=" left-align btn-large waves-effect waves-light orange">Importar</button>
+                            </div>  
+                        </form>
                     </div>
                 </div>
                 <div id="tab4" class="col s12">
+                 <!--    CADASTRAR CHAVES -->
                     <div>
                         <div class="input-field col s12">
                             <input id="emailC" type="email" class="validate">
@@ -81,13 +82,12 @@
                         <spam id="addChave" class=" left-align btn-large waves-effect waves-light orange">Adicionar</spam>
                         <div class="col s12">
                             <h6 class="orange-text"> Sua chave publica: </h6>
-                            <textarea id="chavePublicaC"></textarea>
+                            <textarea id="chavePublicaC" class="areaMedia"></textarea>
                         </div>  
                     </div>
                 </div>
         </div>      
     </div>
-
 
       <!-- Compiled and minified JavaScript -->
     <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>

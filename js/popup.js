@@ -1,22 +1,36 @@
 $(document).ready(function(){
     $('.tabs').tabs();
 
-      $("#encryptAba").click(
-        function() {
-            alert('oi')
-        }
-        );
+    $('#btnEncrypt').click( function(event) {
+        $.ajax({
+            data : {
+                email :   $("#emailEncrypt").val(),
+                texto :   $("#textoEncrypt").val()
+            },
+            type : 'POST',
+            url : 'http://127.0.0.1:5000/criptografar'
+        })
 
-        $("#encryptAba").click(
-            function() {
-                alert('oi')
-            }
-        );
+        .done(function(data){
+            $("#textoCriptografado").val(data.mensagem);
+        });
+        event.preventDefault();
+    });
    });
 
    var req = new XMLHttpRequest();
    var btn = document.querySelector('#addChave');
+   var abaEncryptar = document.querySelector('#encryptAba');
 
+   var txtAreaic = document.querySelector('#chaveImportar');
+   var btnic = document.querySelector('#btnImportarChave');
+   btnic.onclick = function(){
+    setTimeout(function(){
+        alert("Chave importada");
+        txtAreaic.value = "";
+      }, 500);
+      
+   }
   
 
     btn.onclick = function () {
